@@ -1,8 +1,6 @@
 {
-	"name": "discordbot",
 	"module": "index.ts",
 	"type": "module",
-	"private": true,
 	"scripts": {
 		"start": "bun run ./src/index.ts"
 	},
