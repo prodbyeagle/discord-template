@@ -1,4 +1,3 @@
-// src/commands/food.ts
 import type { ICommand } from '@/types';
 import {
 	SlashCommandBuilder,

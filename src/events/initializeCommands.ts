@@ -2,6 +2,8 @@ import { REST, Routes } from 'discord.js';
 
 import { pingCommand } from '@/commands/ping';
 import { foodcommand } from '@/commands/food';
+import { echocommand } from '@/commands/echo';
+import { usercommand } from '@/commands/user';
 
 import { EagleClient } from '@/client';
 import { logMessage, config } from '@/lib';
@@ -27,7 +29,12 @@ export const initializeCommands = async (
 	const commands = new Map<string, ICommand>();
 
 	// Array of all available commands to register
-	const allCommands: ICommand[] = [pingCommand, foodcommand];
+	const allCommands: ICommand[] = [
+		pingCommand,
+		foodcommand,
+		echocommand,
+		usercommand,
+	];
 
 	// Loop through each command and set it up in the map and client
 	for (const command of allCommands) {
