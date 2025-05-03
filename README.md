@@ -1,14 +1,6 @@
-# Discord Bot Template
+# EagleBot Template
 
 This template provides a starting point for building a Discord bot using Discord.js. It includes examples for setting up client events, commands, and event handling, along with a recommended project structure.
-
-## Features
-
--   **TypeScript** with strict configuration
--   **Discord.js v14** integration
--   Built-in commands (e.g., a ping command)
--   Event handling for interactions, command registrations, and client ready events
--   ESLint configuration for code consistency
 
 ## Setup
 
