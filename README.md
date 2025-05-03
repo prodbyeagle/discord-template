@@ -1,49 +1,101 @@
-# EagleBot Template
+# 🦅 EagleBot Template
 
-This template provides a starting point for building a Discord bot using Discord.js. It includes examples for setting up client events, commands, and event handling, along with a recommended project structure.
+A modern, modular Discord bot starter built with **TypeScript** and **Discord.js v14+**, designed for performance, scalability, and ease of development. Includes autocomplete, command handling, typed client extensions, and recommended project structure.
 
-## Setup
+---
 
-1. **Clone the Repository**  
-   Download or clone the template into your workspace.
+## ⚙️ Features
 
-2. **Install Dependencies**  
-   Run the following command to install the required packages:
+* ✅ Slash command registration with autocomplete support
+* ✅ Typed `EagleClient` extension for scalable architecture
+* ✅ Centralized command and event management
+* ✅ Environment-based config with graceful error handling
+
+---
+
+## 🚀 Getting Started
+
+### 1. **Clone the Repository**
 
 ```bash
-npm i
+git clone https://github.com/yourusername/eaglebot-template.git
+cd eaglebot-template
 ```
 
-or
+### 2. **Install Dependencies**
+
+Choose your preferred package manager:
 
 ```bash
-bun i
+npm install
+# or
+bun install
 ```
 
-3. **Configure the Bot**
+### 3. **Configure Environment Variables**
 
--   add bot token inside your .env as BOT_TOKEN.
+Create a `.env` file in the root directory and add your bot token:
 
-## Running the Bot
+```env
+BOT_TOKEN=your-bot-token-here
+```
 
-Use the following command to start your bot:
+Alternatively, you can edit the default config file at `src/lib/config.ts` if you prefer inline configuration.
+
+---
+
+## 🧪 Running the Bot
+
+To start the bot:
 
 ```bash
 npm run start
-```
-
-or
-
-```bash
+# or
 bun start
 ```
 
-Ensure that your environment variable `BOT_TOKEN` is set or update the token in the configuration file.
+Make sure `BOT_TOKEN` is correctly defined in your `.env`.
 
-## Customization
+---
 
--   **Commands**: Add new commands in the `src/commands` directory and import them in the command initializer.
--   **Events**: Extend support or customize event handlers in the `src/events` directory.
--   **Client**: Modify the custom client (`EagleClient` in `src/client.ts`) to suit your application needs.
+## 🧩 Customization
 
-Happy Coding!
+### 🔹 Commands
+
+Add new slash commands inside `src/commands/` and register them in `initializeCommands.ts`.
+
+Each command follows a modular structure and supports optional `autocomplete`.
+
+### 🔹 Events
+
+Create and manage Discord event listeners in `src/events/`. Events are automatically triggered based on Discord.js lifecycle hooks.
+
+### 🔹 Custom Client (`EagleClient`)
+
+The bot extends `Client` with custom properties (like `commands`, `audio`, etc.). Modify `src/client.ts` to define your own properties or behaviors.
+
+---
+
+## 📁 Project Structure
+
+```bash
+src/
+├── client.ts              # Custom client (EagleClient)
+├── commands/              # Slash commands
+├── events/                # Discord events (ready, interaction, etc.)
+├── lib/                   # Shared utilities, config, logging
+├── modules/               # Functional features like recording/audio
+└── types/                 # Global type declarations (e.g., ICommand)
+```
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. If you encounter bugs or have ideas for improvements, feel free to open an issue.
+
+---
+
+## 📜 License
+
+MIT — Feel free to use, modify, and distribute.
