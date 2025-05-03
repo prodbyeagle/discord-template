@@ -9,8 +9,6 @@ import type { ICommand } from '@/types';
 import { EagleClient } from '@/client';
 
 export const pingCommand: ICommand = {
-	name: 'ping',
-	description: 'Replies with Pong! and latency info',
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Replies with Pong! and latency info')

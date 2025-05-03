@@ -1,6 +1,7 @@
 import { REST, Routes } from 'discord.js';
+
 import { pingCommand } from '@/commands/ping';
-import { autocompleteCommand } from '@/commands/autocomplete';
+import { foodcommand } from '@/commands/food';
 
 import { EagleClient } from '@/client';
 import { logMessage, config } from '@/lib';
@@ -26,12 +27,12 @@ export const initializeCommands = async (
 	const commands = new Map<string, ICommand>();
 
 	// Array of all available commands to register
-	const allCommands: ICommand[] = [pingCommand, autocompleteCommand];
+	const allCommands: ICommand[] = [pingCommand, foodcommand];
 
 	// Loop through each command and set it up in the map and client
 	for (const command of allCommands) {
-		commands.set(command.name, command);
-		client.commands.set(command.name, command);
+		commands.set(command.data.name, command);
+		client.commands.set(command.data.name, command);
 	}
 
 	if (!client.user) {
@@ -44,8 +45,8 @@ export const initializeCommands = async (
 
 	try {
 		await rest.put(Routes.applicationCommands(client.user.id), {
-			body: Array.from(commands.values()).map(
-				(command) => command.data.toJSON()
+			body: Array.from(commands.values()).map((command) =>
+				command.data.toJSON()
 			),
 		});
 		logMessage('Commands successfully registered.', 'info');
