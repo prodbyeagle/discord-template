@@ -1,6 +1,6 @@
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 
-import type { ICommand } from './types';
+import type { ICommand } from '@/types';
 
 /**
  * Custom Discord client class for `Eagle`.
