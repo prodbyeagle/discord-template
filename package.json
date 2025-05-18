@@ -5,13 +5,13 @@
 		"start": "bun run ./src/index.ts"
 	},
 	"devDependencies": {
-		"@types/bun": "latest"
+		"@types/bun": "^1.2.13"
 	},
 	"peerDependencies": {
-		"typescript": "latest"
+		"typescript": "^5.8.3"
 	},
 	"dependencies": {
-		"discord.js": "latest",
-		"eslint": "latest"
+		"discord.js": "^14.19.3",
+		"eslint": "^9.27.0"
 	}
 }
