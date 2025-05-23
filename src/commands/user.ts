@@ -1,4 +1,11 @@
-import { SlashCommandBuilder, EmbedBuilder, MessageFlags } from 'discord.js';
+import {
+	SlashCommandBuilder,
+	MessageFlags,
+	ContainerBuilder,
+	TextDisplayBuilder,
+	SectionBuilder,
+	ThumbnailBuilder,
+} from 'discord.js';
 import type { ICommand } from '@/types';
 
 export const usercommand: ICommand = {
@@ -13,26 +20,60 @@ export const usercommand: ICommand = {
 		),
 
 	async execute(interaction) {
-		const user = interaction.options.getUser('target', true);
-		const member = interaction.guild?.members.cache.get(user.id);
+		try {
+			const user = interaction.options.getUser('target', true);
+			const member = interaction.guild?.members.cache.get(user.id);
 
-		const embed = new EmbedBuilder()
-			.setTitle(`👤 User Info: ${user.username}`)
-			.setThumbnail(user.displayAvatarURL())
-			.addFields(
-				{ name: 'Username', value: `${user.tag}`, inline: true },
-				{ name: 'ID', value: user.id, inline: true },
-				{
-					name: 'Joined Server',
-					value: member?.joinedAt?.toDateString() || 'Unknown',
-					inline: false,
-				}
-			)
-			.setColor('Random');
+			const displayName = user.globalName ?? user.username;
+			const joinedDate = member?.joinedAt?.toDateString() ?? 'Unknown';
 
-		await interaction.reply({
-			embeds: [embed],
-			flags: MessageFlags.Ephemeral,
-		});
+			const header = new TextDisplayBuilder().setContent(
+				`👤 **User Info for ${displayName}**`
+			);
+
+			const tagDisplay = new TextDisplayBuilder().setContent(
+				`🧾 **Tag:** \`${user.tag}\``
+			);
+
+			const idDisplay = new TextDisplayBuilder().setContent(
+				`🆔 **ID:** \`${user.id}\``
+			);
+
+			const joinedDisplay = new TextDisplayBuilder().setContent(
+				`📅 **Joined:** \`${joinedDate}\``
+			);
+
+			const thumbnail = new ThumbnailBuilder().setURL(
+				user.displayAvatarURL({ size: 128 })
+			);
+
+			const infoSection = new SectionBuilder()
+				.addTextDisplayComponents(tagDisplay, idDisplay, joinedDisplay)
+				.setThumbnailAccessory(thumbnail);
+
+			const container = new ContainerBuilder()
+				.addTextDisplayComponents(header)
+				.addSectionComponents(infoSection);
+
+			await interaction.reply({
+				flags: MessageFlags.Ephemeral | MessageFlags.IsComponentsV2,
+				components: [container],
+			});
+		} catch (error) {
+			console.error('Error in user-info-new command:', error);
+			if (interaction.replied || interaction.deferred) {
+				await interaction.editReply({
+					content:
+						'❌ An unexpected error occurred while processing your request.',
+					components: [],
+				});
+			} else {
+				await interaction.reply({
+					content:
+						'❌ An unexpected error occurred while processing your request.',
+					flags: MessageFlags.Ephemeral,
+				});
+			}
+		}
 	},
 };
