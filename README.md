@@ -40,8 +40,6 @@ Create a `.env` file in the root directory and add your bot token:
 BOT_TOKEN=your-bot-token-here
 ```
 
-Alternatively, you can edit the default config file at `src/lib/config.ts` if you prefer inline configuration.
-
 ---
 
 ## 🧪 Running the Bot
