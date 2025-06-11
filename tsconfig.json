@@ -18,15 +18,19 @@
 			"@/*": ["./src/*"]
 		},
 
-		// Best practices
 		"strict": true,
-		"skipLibCheck": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedIndexedAccess": true,
+		"skipLibCheck": true,
 
-		// Some stricter flags (disabled by default)
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"noPropertyAccessFromIndexSignature": false
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noPropertyAccessFromIndexSignature": true,
+
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"exactOptionalPropertyTypes": true
 	}
 }
