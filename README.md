@@ -1,4 +1,4 @@
-# 🦅 EagleBot Template
+# 🦅 Discord.js Bot Template
 
 A modern, modular Discord bot starter built with **TypeScript** and **Discord.js v14+**, designed for performance, scalability, and ease of development. Includes autocomplete, command handling, typed client extensions, and recommended project structure.
 
@@ -18,7 +18,7 @@ A modern, modular Discord bot starter built with **TypeScript** and **Discord.js
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/yourusername/eaglebot-template.git
+git clone https://github.com/prodbyeagle/discord-template.git
 cd eaglebot-template
 ```
 
@@ -39,8 +39,6 @@ Create a `.env` file in the root directory and add your bot token:
 ```env
 BOT_TOKEN=your-bot-token-here
 ```
-
-Alternatively, you can edit the default config file at `src/lib/config.ts` if you prefer inline configuration.
 
 ---
 
