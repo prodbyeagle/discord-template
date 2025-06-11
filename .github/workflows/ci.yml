@@ -32,7 +32,7 @@ jobs:
               run: bun install --frozen-lockfile
 
             - name: Check formatting with Prettier
-              run: bunx prettier --check "**/*.{ts,js,json,md,mdx}"
+              run: bunx prettier --check "**/*.{ts,js,json,md,mdx} --write"
 
             - name: Type check with tsc
               run: bunx tsc --noEmit

@@ -16,13 +16,12 @@ const initializeBot = async () => {
 		await client.login(config.token);
 
 		logMessage('Bot successfully logged in and ready!', 'info');
-	}
-	catch (err) {
+	} catch (err) {
 		logMessage(
 			`Error during bot initialization: ${
 				err instanceof Error ? err.message : err
 			}`,
-			'error',
+			'error'
 		);
 	}
 };
