@@ -1,21 +1,11 @@
 import js from '@eslint/js';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
+import { Linter } from 'eslint';
 
-const config = [
+export const config: Linter.Config[] = [
 	js.configs.recommended,
 	{
 		languageOptions: {
-			parser: tsParser,
-			parserOptions: {
-				ecmaVersion: 'latest',
-				sourceType: 'module',
-				project: './tsconfig.json',
-			},
-			extensions: ['.ts', '.tsx', '.js', '.jsx'],
-		},
-		plugins: {
-			'@typescript-eslint': tsPlugin,
+			ecmaVersion: 'latest',
 		},
 		rules: {
 			'arrow-spacing': ['warn', { before: true, after: true }],
@@ -43,7 +33,6 @@ const config = [
 			'no-shadow': ['error', { allow: ['err', 'resolve', 'reject'] }],
 			'no-trailing-spaces': ['error'],
 			'no-var': 'error',
-			'no-undef': 'off',
 			'object-curly-spacing': ['error', 'always'],
 			'prefer-const': 'error',
 			quotes: ['error', 'single'],
@@ -51,7 +40,11 @@ const config = [
 			'space-before-blocks': 'error',
 			'space-before-function-paren': [
 				'error',
-				{ anonymous: 'never', named: 'never', asyncArrow: 'always' },
+				{
+					anonymous: 'never',
+					named: 'never',
+					asyncArrow: 'always',
+				},
 			],
 			'space-in-parens': 'error',
 			'space-infix-ops': 'error',
@@ -61,5 +54,3 @@ const config = [
 		},
 	},
 ];
-
-export default config;
